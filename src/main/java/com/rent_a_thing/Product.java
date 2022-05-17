@@ -26,12 +26,17 @@ public class Product {
     }
 
     public void rent(Customer customer) {
-        if (customer == null) {
+        if (isRented) {
+            return;
+        }
+        
+        User currentLoggedInUser = User.getCurrentLoggedinUser();
+        if (customer == null || currentLoggedInUser == null) {
             return;
         }
 
         this.isRented = true;
-        new RentHistory(customer, User.getCurrentLoggedinUser(), this);
+        new RentHistory(customer, currentLoggedInUser, this);
     }
 
     public void return_() {
