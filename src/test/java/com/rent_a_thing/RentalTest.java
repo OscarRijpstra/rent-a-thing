@@ -8,14 +8,18 @@ import org.junit.Test;
 public class RentalTest {
     @Test
     public void productCanBeRented() {
-        Customer customer = new Customer("Test", "Persoon");
         Product product = new Product("Audi", "S5", 100.00, 2500.00);
-        new User("tom", "wandel");
-        User.signIn("tom",  "wandel");
-
+        product.rent(null);
         assertFalse(product.isRented());
 
+        Customer customer = new Customer("Test", "Persoon");
         product.rent(customer);
+        assertFalse(product.isRented());
+
+        new User("tom", "wandel");
+        User.signIn("tom",  "wandel");
+        product.rent(customer);
+
         assertTrue(product.isRented());
     }
 }
