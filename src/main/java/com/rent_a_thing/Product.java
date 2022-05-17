@@ -8,20 +8,30 @@ public class Product {
     private String brand;
     private String model;
     private Boolean isRented;
-    private Float dailyPrice;
-    private Float weight;
+    private Double dailyPrice;
+    private Double weight;
      
-    public Product(String brand, String model, Float dailyPrice, Float weight) {
+    public Product(String brand, String model, Double dailyPrice, Double weight) {
         this.brand = brand;
         this.model = model;
         this.dailyPrice = dailyPrice;
         this.weight = weight;
+        this.isRented = false;
 
         PRODUCTS.add(this);
     }
 
-    public void rent() {
+    public Boolean isRented() {
+        return this.isRented;
+    }
+
+    public void rent(Customer customer) {
+        if (customer == null) {
+            return;
+        }
+
         this.isRented = true;
+        new RentHistory(customer, User.getCurrentLoggedinUser(), this);
     }
 
     public void return_() {
