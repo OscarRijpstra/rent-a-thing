@@ -26,6 +26,10 @@ public class Product {
     }
 
     public void rent(Customer customer) {
+        if (isRented) {
+            return;
+        }
+        
         User currentLoggedInUser = User.getCurrentLoggedinUser();
         if (customer == null || currentLoggedInUser == null) {
             return;
