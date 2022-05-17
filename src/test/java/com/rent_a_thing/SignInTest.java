@@ -22,5 +22,7 @@ public class SignInTest {
 
         User.signIn("tom",  "wandel");
         assertNotNull( User.getCurrentLoggedinUser());
+
+        User.signOut();
     }
 }

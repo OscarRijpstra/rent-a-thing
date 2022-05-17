@@ -31,4 +31,8 @@ public class User {
             }
         }
     }
+
+    public static void signOut() {
+        currentUser = null;
+    }
 }

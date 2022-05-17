@@ -10,15 +10,25 @@ public class RentHistory {
     private User employee;
     private Product product;
     private LocalDateTime startdate;
-    private LocalDateTime enddate;
 
     public RentHistory(Customer customer, User employee, Product product) {
         this.customer = customer;
         this.employee = employee;
         this.product = product;
         this.startdate = LocalDateTime.now();
-        this.enddate = LocalDateTime.MIN;
 
         RENTHISTORY.add(this);
+    }
+
+    public static Integer countRentals(Customer customer) {
+        Integer rentedCount = 0;
+
+        for (RentHistory history : RENTHISTORY) {
+            if (customer == history.customer) {
+                rentedCount++;
+            }
+        }
+
+        return rentedCount;
     }
 }
