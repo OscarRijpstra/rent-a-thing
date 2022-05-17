@@ -10,7 +10,11 @@ public class RentalTest {
     public void productCanBeRented() {
         Customer customer = new Customer("Test", "Persoon");
         Product product = new Product("Audi", "S5", 100.00, 2500.00);
+        new User("tom", "wandel");
+        User.signIn("tom",  "wandel");
+
         assertFalse(product.isRented());
+
         product.rent(customer);
         assertTrue(product.isRented());
     }
