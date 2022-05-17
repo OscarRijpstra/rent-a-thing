@@ -12,12 +12,12 @@ public class RentHistory {
     private LocalDateTime startdate;
     private LocalDateTime enddate;
 
-    public RentHistory(Customer customer, User employee, Product product, LocalDateTime startdate, LocalDateTime enddate) {
+    public RentHistory(Customer customer, User employee, Product product) {
         this.customer = customer;
         this.employee = employee;
         this.product = product;
-        this.startdate = startdate;
-        this.enddate = enddate;
+        this.startdate = LocalDateTime.now();
+        this.enddate = LocalDateTime.MIN;
 
         RENTHISTORY.add(this);
     }
