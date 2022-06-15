@@ -2,37 +2,31 @@ package com.rent_a_thing;
 
 import java.util.ArrayList;
 
-public class User {
-    private static final ArrayList<User> USERS = new ArrayList<User>();
-    private static User currentUser;
- 
-    private String username;
-    private String password;
+public abstract class User { 
+    private String firstname;
+    private String lastname;
+    private String role;
 
-    public User(String username, String password) {
-        // TODO: check if user does not exists
-        this.username = username;
-
-        // TODO: encrypt password
-        this.password = password;
-
-        USERS.add(this);
+    public User(String firstname, String lastname, String role) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.role = role;
     }
 
-    public static User getCurrentLoggedinUser() {
-        return currentUser;
+    public String getFirstname() {
+        return this.firstname;
     }
 
-    public static void signIn(String username, String password) {
-        for (User user : USERS) {
-            // TODO: check encrypted password
-            if (user.username.equals(username) && user.password.equals(password)) {
-                currentUser = user;
-            }
-        }
+    public String getLastname() {
+        return this.lastname;
     }
 
-    public static void signOut() {
-        currentUser = null;
+    public String getRole() {
+        return this.role;
+    }
+
+    @Override
+    public String toString() {
+        return "Gebruiker: " + this.firstname + " " + this.lastname;
     }
 }
