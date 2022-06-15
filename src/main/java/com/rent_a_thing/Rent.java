@@ -12,7 +12,13 @@ public class Rent {
     private LocalDateTime startdate;
     private LocalDateTime enddate;
 
-    public Rent(Customer customer, Employee employee, Product product) throws Exception {
+    public Rent(Customer customer, Product product) throws Exception {
+        Employee employee = Employee.getLoggedInUser();
+
+        if (employee == null) {
+            throw new Exception("Er is geen medewerker ingelogd");
+        }
+
         if(!productIsAvailable(product)) {
             throw new Exception("Dit product wordt al verhuurd");
         }
@@ -24,6 +30,10 @@ public class Rent {
         this.enddate = null;
 
         RENTHISTORY.add(this);
+    }
+
+    public LocalDateTime getEndDate() {
+        return this.enddate;
     }
 
     public static Rent getLastRented(Product product) {

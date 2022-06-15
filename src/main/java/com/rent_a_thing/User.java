@@ -27,6 +27,6 @@ public abstract class User {
 
     @Override
     public String toString() {
-        return "Gebruiker: " + this.firstname + " " + this.lastname;
+        return "Gebruiker: " + getFirstname() + " " + getLastname();
     }
 }
